@@ -1,0 +1,65 @@
+{% extends "open_channel_data_viewer/base.html" %}
+
+{% load staticfiles %}
+
+{% block app_navigation_items %}
+  <li class="title">Navigation</li>
+  <li><a href="{% url 'open_channel_data_viewer:home' %}">Sites</a></li>
+  <li class="active"><a href="">Site Details</a></li>
+  <li><a href="">About</a></li>
+{% endblock %}
+
+{% block app_content %}
+  <h3>Sites > Fool Creek</h3>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
+    <li><a data-toggle="tab" href="#sediment-transport">Sediment Transport</a></li>
+    <li><a data-toggle="tab" href="#velocity-time">Velocity</a></li>
+    <li><a data-toggle="tab" href="#depth-time">Depth</a></li>
+    <li><a data-toggle="tab" href="#flow-time">Flow</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="summary" class="tab-pane fade in active">
+      <div class="col-md-6">
+        <table class="table table-hover">
+          <tr>
+            <td class="name">Site Name</td>
+            <td>Fool Creek</td>
+          </tr>
+          <tr>
+            <td class="name">State</td>
+            <td>CO</td>
+          </tr>
+          <tr>
+            <td class="name"># of Samples</td>
+            <td>95</td>
+          </tr>
+          <tr>
+            <td class="name">Drainage Area (km^2)</td>
+            <td>2.89</td>
+          </tr>
+          <tr>
+            <td class="name">Sampling Method</td>
+            <td>76-mm H.S.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="sediment-transport" class="tab-pane fade">
+      <img src="{% static 'open_channel_data_viewer/images/sediment_transport_chart.PNG' %}">
+    </div>
+    <div id="velocity-time" class="tab-pane fade">
+      <img src="{% static 'open_channel_data_viewer/images/velocity_chart.PNG' %}">
+    </div>
+    <div id="depth-time" class="tab-pane fade">
+      <img src="{% static 'open_channel_data_viewer/images/depth_chart.PNG' %}">
+    </div>
+    <div id="flow-time" class="tab-pane fade">
+      <img src="{% static 'open_channel_data_viewer/images/flow_chart.PNG' %}">
+    </div>
+  </div>
+{% endblock %}
+
+{% block app_actions %}
+{% endblock %}

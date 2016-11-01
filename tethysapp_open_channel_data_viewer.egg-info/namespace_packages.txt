@@ -1,0 +1,2 @@
+tethysapp
+tethysapp.open_channel_data_viewer
