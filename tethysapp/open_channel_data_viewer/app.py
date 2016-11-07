@@ -1,4 +1,5 @@
 from tethys_sdk.base import TethysAppBase, url_map_maker
+from tethys_sdk.stores import PersistentStore
 
 
 class OpenChannelDataViewer(TethysAppBase):
@@ -16,7 +17,6 @@ class OpenChannelDataViewer(TethysAppBase):
     enable_feedback = True
     feedback_emails = ['ezra.j.rice@gmail.com']
 
-        
     def url_maps(self):
         """
         Add controllers
@@ -32,3 +32,15 @@ class OpenChannelDataViewer(TethysAppBase):
         )
 
         return url_maps
+
+    def persistent_stores(self):
+        """
+        Add one or more persistent stores
+        """
+        stores = (PersistentStore(name='open_channel_data_viewer_db',
+                                  initializer='open_channel_data_viewer.init_stores.init_db',
+                                  spatial=True
+                                  ),
+                  )
+
+        return stores
