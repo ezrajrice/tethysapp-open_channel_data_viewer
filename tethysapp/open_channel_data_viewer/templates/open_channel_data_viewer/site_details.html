@@ -1,6 +1,7 @@
 {% extends "open_channel_data_viewer/base.html" %}
 
 {% load staticfiles %}
+{% load tethys_gizmos %}
 
 {% block app_navigation_items %}
   <li class="title">Navigation</li>
@@ -47,7 +48,7 @@
       </div>
     </div>
     <div id="sediment-transport" class="tab-pane fade">
-      <img src="{% static 'open_channel_data_viewer/images/sediment_transport_chart.PNG' %}">
+      {% gizmo plot_view scatter_plot_view %}
     </div>
     <div id="velocity-time" class="tab-pane fade">
       <img src="{% static 'open_channel_data_viewer/images/velocity_chart.PNG' %}">

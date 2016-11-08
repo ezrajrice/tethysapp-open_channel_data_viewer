@@ -12,16 +12,12 @@
       <table class="table table-hover" id="sites_table">
           <thead>
               <th>Site Name</th>
-              <th>State</th>
-              <th>First Record</th>
-              <th>Last Record</th>
           </thead>
-          <tr onclick="window.document.location='{% url 'open_channel_data_viewer:site_details' site_id=1 %}';" style="cursor: pointer;">
-              <td class="site_name" data-id="Fool Creek"><a href="{% url 'open_channel_data_viewer:site_details' site_id=1 %}">Fool Creek</a></td>
-              <td class="state" data-id="CO">CO</td>
-              <td class="first_record" data-id="May 20, 1993">May 20, 1993</td>
-              <td class="last_record" data-id="July 1, 1997">July 1, 1997</td>
+          {% for site in sites %}
+          <tr onclick="window.document.location='{% url 'open_channel_data_viewer:site_details' site_name=site.id %}';" style="cursor: pointer;">
+              <td class="site_name" data-id="{{site.id}}"><a href="{% url 'open_channel_data_viewer:site_details' site_name=site.id %}">{{site.name}}</a></td>
           </tr>
+          {% endfor %}
       </table>
   </div>
 {% endblock %}

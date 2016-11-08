@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from .model import SessionMaker, OpenChannelData
+from sqlalchemy import func
+from tethys_sdk.gizmos import LinePlot, ScatterPlot
 
 
 @login_required()
@@ -7,40 +10,70 @@ def home(request):
     """
     Controller for the app home page.
     """
-    context = {}
+    # Create a session
+    session = SessionMaker()
+
+    # Query DB for gage objects
+    sites_query = session.query(OpenChannelData.name, func.Min(OpenChannelData.record_date).label("min_date"),
+                          func.Max(OpenChannelData.record_date).label("max_date")).\
+        distinct().\
+        group_by(OpenChannelData.name).\
+        all()
+    sites = []
+    for site in sites_query:
+        site_id = site.name.replace(' ', '-')
+        site_obj = {
+            'id': site_id,
+            'name': site.name,
+            'min_date': site.min_date,
+            'max_date': site.max_date
+        }
+        sites.append(site_obj)
+
+    session.close()
+
+    context = {"sites": sites}
 
     return render(request, 'open_channel_data_viewer/home.html', context)
 
 
 @login_required()
-def site_details(request, site_id):
+def site_details(request, site_name):
     """
     """
-    bedload_data = [0.00151, 0.00087, 0.00099, 0.00041, 0.01438, 0.00373, 0.00157, 0.0026, 0.00096,
-                    0.00032, 0.0007, 0.00211, 0.00446, 0.00487, 0.00676, 0.01243, 0.01935, 0.01658,
-                    0.00627, 0.00488, 0.0034, 0.00693, 0.00271, 0.00828, 0.00165, 0.00138, 0.00215,
-                    0.0028, 0.00059, 0, 0.00018, 0, 0.00016, 0.0014, 0, 0.00014, 0.00029, 0, 0.00291,
-                    0.00176, 0.00027, 0.00714, 0.00314, 0.00587, 0.0207, 0.01538, 0.02087, 0.00858,
-                    0.00401, 0.00389, 0, 0.00076, 0.00157, 0.0019, 0, 0, 0.00365, 0.00019, 0, 0, 0,
-                    0.00149, 0, 0, 0, 0.0111, 0.02706, 0.00388, 0.00366, 0.02433, 0.01296, 0.01218,
-                    0.00533, 0.00169, 0.00075, 0.00433, 0.00477, 0.002, 0.00676, 0.03085, 0.01802,
-                    0.02983, 0.02136, 0.02711, 0.0099, 0.01109, 0.02325, 0.01194, 0.02825, 0.00772,
-                    0.01401, 0.01167, 0.02047, 0.01113, 0.00515]
+    # Create the connection to db
+    session = SessionMaker()
 
-    flow_data = [0.11, 0.12, 0.2, 0.2, 0.27, 0.27, 0.24, 0.23, 0.2, 0.19, 0.18, 0.19, 0.25, 0.29, 0.29,
-                 0.33, 0.34, 0.32, 0.28, 0.28, 0.24, 0.24, 0.2, 0.19, 0.17, 0.16, 0.15, 0.12, 0.11, 0.1,
-                 0.09, 0.08, 0.07, 0.06, 0.06, 0.06, 0.05, 0.04, 0.18, 0.14, 0.12, 0.2, 0.19, 0.31, 0.4,
-                 0.42, 0.37, 0.36, 0.37, 0.34, 0.27, 0.27, 0.29, 0.27, 0.21, 0.2, 0.19, 0.18, 0.17, 0.15,
-                 0.11, 0.09, 0.07, 0.05, 0.04, 0.34, 0.36, 0.33, 0.3, 0.4, 0.29, 0.27, 0.25, 0.24, 0.23,
-                 0.24, 0.2, 0.15, 0.2, 0.29, 0.43, 0.5, 0.49, 0.48, 0.4, 0.37, 0.35, 0.37, 0.33, 0.3, 0.29,
-                 0.28, 0.32, 0.29, 0.23]
+    site_name = site_name.replace('-', ' ')
 
-    velocity_data = []
+    sediment_transport_data_query = session.query(OpenChannelData.tot_bedload_rate,
+                                                  OpenChannelData.avg_flow).\
+        filter(OpenChannelData.name == site_name).\
+        all()
 
-    depth_data = []
+    sediment_transport_data = []
 
-    time_data = []
+    for row in sediment_transport_data_query:
+        sediment_transport_data.append([row.avg_flow, row.tot_bedload_rate])
 
-    context = {}
+    sediment_transport_dataset = {
+        'data': sediment_transport_data
+    }
+
+    scatter_plot_view = ScatterPlot(
+        width='900px',
+        engine='highcharts',
+        title='Sediment Transport',
+        x_axis_title='Avg Flow',
+        x_axis_units='cms',
+        y_axis_title='Sediment Transport',
+        y_axis_units='kg/s',
+        series=[sediment_transport_dataset],
+        legend=False
+    )
+
+    session.close()
+
+    context = {"scatter_plot_view": scatter_plot_view}
 
     return render(request, 'open_channel_data_viewer/site_details.html', context)

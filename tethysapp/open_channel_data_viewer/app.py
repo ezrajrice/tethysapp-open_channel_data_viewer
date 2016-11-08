@@ -27,9 +27,10 @@ class OpenChannelDataViewer(TethysAppBase):
                            url='open-channel-data-viewer',
                            controller='open_channel_data_viewer.controllers.home'),
                     UrlMap(name='site_details',
-                           url='open-channel-data-viewer/{site_id}/site-details',
+                           url='open-channel-data-viewer/{site_name}/site-details',
+                           regex='[0-9A-Za-z_ .-]+',
                            controller='open_channel_data_viewer.controllers.site_details'),
-        )
+                    )
 
         return url_maps
 
