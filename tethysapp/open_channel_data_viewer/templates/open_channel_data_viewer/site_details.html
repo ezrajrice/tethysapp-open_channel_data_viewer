@@ -7,17 +7,16 @@
   <li class="title">Navigation</li>
   <li><a href="{% url 'open_channel_data_viewer:home' %}">Sites</a></li>
   <li class="active"><a href="">Site Details</a></li>
-  <li><a href="">About</a></li>
 {% endblock %}
 
 {% block app_content %}
-  <h3>Sites > Fool Creek</h3>
+  <h3>Sites > {{site_name}}</h3>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
-    <li><a data-toggle="tab" href="#sediment-transport">Sediment Transport</a></li>
-    <li><a data-toggle="tab" href="#velocity-time">Velocity</a></li>
-    <li><a data-toggle="tab" href="#depth-time">Depth</a></li>
-    <li><a data-toggle="tab" href="#flow-time">Flow</a></li>
+    <li id="sediment-transport-tab"><a data-toggle="tab" href="#sediment-transport">Sediment Transport</a></li>
+    <li id="velocity-tab"><a data-toggle="tab" href="#velocity-time">Velocity</a></li>
+    <li id="depth-tab"><a data-toggle="tab" href="#depth-time">Depth</a></li>
+    <li id="flow-tab"><a data-toggle="tab" href="#flow-time">Flow</a></li>
   </ul>
 
   <div class="tab-content">
@@ -26,23 +25,15 @@
         <table class="table table-hover">
           <tr>
             <td class="name">Site Name</td>
-            <td>Fool Creek</td>
-          </tr>
-          <tr>
-            <td class="name">State</td>
-            <td>CO</td>
-          </tr>
-          <tr>
-            <td class="name"># of Samples</td>
-            <td>95</td>
+            <td>{{site_name}}</td>
           </tr>
           <tr>
             <td class="name">Drainage Area (km^2)</td>
-            <td>2.89</td>
+            <td>{{meta_data.drainage_area}}</td>
           </tr>
           <tr>
             <td class="name">Sampling Method</td>
-            <td>76-mm H.S.</td>
+            <td>{{meta_data.sampling_method}}</td>
           </tr>
         </table>
       </div>
@@ -51,13 +42,13 @@
       {% gizmo plot_view scatter_plot_view %}
     </div>
     <div id="velocity-time" class="tab-pane fade">
-      <img src="{% static 'open_channel_data_viewer/images/velocity_chart.PNG' %}">
+      {% gizmo plot_view velocity_timeseries %}
     </div>
     <div id="depth-time" class="tab-pane fade">
-      <img src="{% static 'open_channel_data_viewer/images/depth_chart.PNG' %}">
+      {% gizmo plot_view depth_timeseries %}
     </div>
     <div id="flow-time" class="tab-pane fade">
-      <img src="{% static 'open_channel_data_viewer/images/flow_chart.PNG' %}">
+      {% gizmo plot_view flow_timeseries %}
     </div>
   </div>
 {% endblock %}

@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c37c5775-10c5-417a-b955-5732b43c0aff" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/tethysapp-open_channel_data_viewer.iml" afterPath="$PROJECT_DIR$/.idea/tethysapp-open_channel_data_viewer.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/app.py" afterPath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/app.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/controllers.py" afterPath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/controllers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/model.py" afterPath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/public/js/main.js" afterPath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/public/js/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/home.html" afterPath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/site_details.html" afterPath="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/site_details.html" />
     </list>
@@ -37,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="124" selection-start-line="17" selection-start-column="124" selection-end-line="17" selection-end-column="124" />
+            <state relative-caret-position="72">
+              <caret line="4" column="87" selection-start-line="4" selection-start-column="87" selection-end-line="4" selection-end-column="87" />
               <folding>
                 <element signature="n#style#0;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -61,13 +64,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controllers.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controllers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/controllers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+            <state relative-caret-position="252">
+              <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,8 +101,28 @@
       <file leaf-file-name="site_details.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/site_details.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+            <state relative-caret-position="90">
+              <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/public/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="13" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -101,13 +136,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/model.py" />
         <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/init_stores.py" />
         <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/app.py" />
-        <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/home.html" />
-        <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/site_details.html" />
         <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/public/css/main.css" />
+        <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/model.py" />
+        <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/public/js/main.js" />
         <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/controllers.py" />
+        <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/site_details.html" />
+        <option value="$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/home.html" />
       </list>
     </option>
   </component>
@@ -320,7 +356,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
@@ -485,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478493365738</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="first pass on highcharts plots">
+      <created>1478628382699</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1478628382699</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -525,7 +568,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Built initial database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Built initial database" />
+    <MESSAGE value="first pass on highcharts plots" />
+    <option name="LAST_COMMIT_MESSAGE" value="first pass on highcharts plots" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -575,7 +619,7 @@
         <state relative-caret-position="36">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -621,7 +665,7 @@
         <state relative-caret-position="720">
           <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -638,6 +682,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -674,7 +719,7 @@
         <state relative-caret-position="720">
           <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -691,6 +736,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -704,13 +750,6 @@
     <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/public/images/icon.gif">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/__init__.py">
@@ -730,13 +769,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/model.py">
+    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/public/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="649">
+          <caret line="68" column="1" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -758,38 +795,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/home.html">
+    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="124" selection-start-line="17" selection-start-column="124" selection-end-line="17" selection-end-column="124" />
+        <state relative-caret-position="46">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="13" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
           <folding>
-            <element signature="n#style#0;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/controllers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/site_details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="90">
+          <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/public/css/main.css">
+    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/templates/open_channel_data_viewer/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="68" column="1" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tethysapp/open_channel_data_viewer/controllers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+        <state relative-caret-position="72">
+          <caret line="4" column="87" selection-start-line="4" selection-start-column="87" selection-end-line="4" selection-end-column="87" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, Float, String
+from sqlalchemy import Column, Integer, Float, String, Date
 from sqlalchemy.orm import sessionmaker
 
 from .app import OpenChannelDataViewer
@@ -20,7 +20,7 @@ class OpenChannelData(Base):
     # Columns
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    record_date = Column(String)
+    record_date = Column(Date)
     sampling_method = Column(String)
     drainage_area = Column(Float)
     avg_flow = Column(Float)

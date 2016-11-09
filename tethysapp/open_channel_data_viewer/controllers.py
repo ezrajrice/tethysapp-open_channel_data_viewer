@@ -1,8 +1,10 @@
+from datetime import datetime
+
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .model import SessionMaker, OpenChannelData
 from sqlalchemy import func
-from tethys_sdk.gizmos import LinePlot, ScatterPlot
+from tethys_sdk.gizmos import ScatterPlot, TimeSeries
 
 
 @login_required()
@@ -15,9 +17,9 @@ def home(request):
 
     # Query DB for gage objects
     sites_query = session.query(OpenChannelData.name, func.Min(OpenChannelData.record_date).label("min_date"),
-                          func.Max(OpenChannelData.record_date).label("max_date")).\
-        distinct().\
-        group_by(OpenChannelData.name).\
+                                func.Max(OpenChannelData.record_date).label("max_date")). \
+        distinct(). \
+        group_by(OpenChannelData.name). \
         all()
     sites = []
     for site in sites_query:
@@ -45,16 +47,35 @@ def site_details(request, site_name):
     session = SessionMaker()
 
     site_name = site_name.replace('-', ' ')
-
-    sediment_transport_data_query = session.query(OpenChannelData.tot_bedload_rate,
-                                                  OpenChannelData.avg_flow).\
+    metadata_query = session.query(OpenChannelData.drainage_area,
+                                   OpenChannelData.sampling_method).\
         filter(OpenChannelData.name == site_name).\
+        distinct().\
+        first()
+
+    data_query = session.query(OpenChannelData.tot_bedload_rate,
+                               OpenChannelData.avg_flow,
+                               OpenChannelData.avg_velocity,
+                               OpenChannelData.avg_depth,
+                               OpenChannelData.record_date). \
+        filter(OpenChannelData.name == site_name). \
         all()
 
     sediment_transport_data = []
+    velocity_data = []
+    depth_data = []
+    flow_data = []
 
-    for row in sediment_transport_data_query:
+    for row in data_query:
+        date_list = []
         sediment_transport_data.append([row.avg_flow, row.tot_bedload_rate])
+        date_res = row.record_date.split('/')
+        for x in date_res:
+            date_list.append(int(x))
+        row_date = datetime(date_list[2], date_list[0], date_list[1])
+        velocity_data.append([row_date, row.avg_velocity])
+        depth_data.append([row_date, row.avg_depth])
+        flow_data.append([row_date, row.avg_flow])
 
     sediment_transport_dataset = {
         'data': sediment_transport_data
@@ -72,8 +93,43 @@ def site_details(request, site_name):
         legend=False
     )
 
+    velocity_timeseries = TimeSeries(
+        width='900px',
+        engine='highcharts',
+        title='Velocity Timeseries Plot',
+        y_axis_title='Velocity',
+        y_axis_units='m/s',
+        series=[{'data': velocity_data}],
+        legend=False
+    )
+
+    depth_timeseries = TimeSeries(
+        width='900px',
+        engine='highcharts',
+        title='Depth Timeseries Plot',
+        y_axis_title='Depth',
+        y_axis_units='m',
+        series=[{'data': depth_data}],
+        legend=False
+    )
+
+    flow_timeseries = TimeSeries(
+        width='900px',
+        engine='highcharts',
+        title='Flow Timeseries Plot',
+        y_axis_title='Flow',
+        y_axis_units='cms',
+        series=[{'data': flow_data}],
+        legend=False
+    )
+
     session.close()
 
-    context = {"scatter_plot_view": scatter_plot_view}
+    context = {"scatter_plot_view": scatter_plot_view,
+               "velocity_timeseries": velocity_timeseries,
+               "depth_timeseries": depth_timeseries,
+               "flow_timeseries": flow_timeseries,
+               "site_name": site_name,
+               "meta_data": metadata_query}
 
     return render(request, 'open_channel_data_viewer/site_details.html', context)
