@@ -1,9 +1,9 @@
 from datetime import datetime
-
+from suds.client import Client
+from pandas import Series
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .model import SessionMaker, OpenChannelData
-from sqlalchemy import func
 from tethys_sdk.gizmos import ScatterPlot, TimeSeries
 
 
@@ -12,15 +12,22 @@ def home(request):
     """
     Controller for the app home page.
     """
-    # Create a session
-    session = SessionMaker()
+    # Create the inputs needed for the web service call
+    wsdl_url = 'http://hydroportal.cuahsi.org/nwisuv/cuahsi_1_1.asmx?WSDL'
+    site_code = 'NWISUV:10109000'
+    variable_code = 'NWISUV:00060'
+    begin_date = '2016-08-01'
+    end_date = '2016-11-28'
 
-    # Query DB for gage objects
-    sites_query = session.query(OpenChannelData.name, func.Min(OpenChannelData.record_date).label("min_date"),
-                                func.Max(OpenChannelData.record_date).label("max_date")). \
-        distinct(). \
-        group_by(OpenChannelData.name). \
-        all()
+    # Create a new object named "NWIS" for calling the web service methods
+    NWIS = Client(wsdl_url).service
+
+    # Call the GetValuesObject method to return datavalues
+    response = NWIS.GetValuesObject(site_code, variable_code, begin_date, end_date)
+
+    # Get the site's name from the response
+    site_name = response.timeSeries[0].sourceInfo.siteName
+    sites_query = []
     sites = []
     for site in sites_query:
         site_id = site.name.replace(' ', '-')
@@ -31,8 +38,6 @@ def home(request):
             'max_date': site.max_date
         }
         sites.append(site_obj)
-
-    session.close()
 
     context = {"sites": sites}
 

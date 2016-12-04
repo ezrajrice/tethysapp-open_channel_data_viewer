@@ -13,8 +13,8 @@ class OpenChannelDataViewer(TethysAppBase):
     package = 'open_channel_data_viewer'
     root_url = 'open-channel-data-viewer'
     color = '#29a3a3'
-    description = 'Place a brief description of your app here.'
-    enable_feedback = True
+    description = ''
+    enable_feedback = False
     feedback_emails = ['ezra.j.rice@gmail.com']
 
     def url_maps(self):
