@@ -14,9 +14,6 @@
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
     <li id="sediment-transport-tab"><a data-toggle="tab" href="#sediment-transport">Sediment Transport</a></li>
-    <li id="velocity-tab"><a data-toggle="tab" href="#velocity-time">Velocity</a></li>
-    <li id="depth-tab"><a data-toggle="tab" href="#depth-time">Depth</a></li>
-    <li id="flow-tab"><a data-toggle="tab" href="#flow-time">Flow</a></li>
   </ul>
 
   <div class="tab-content">
@@ -27,28 +24,11 @@
             <td class="name">Site Name</td>
             <td>{{site_name}}</td>
           </tr>
-          <tr>
-            <td class="name">Drainage Area (km^2)</td>
-            <td>{{meta_data.drainage_area}}</td>
-          </tr>
-          <tr>
-            <td class="name">Sampling Method</td>
-            <td>{{meta_data.sampling_method}}</td>
-          </tr>
         </table>
       </div>
     </div>
     <div id="sediment-transport" class="tab-pane fade">
       {% gizmo plot_view scatter_plot_view %}
-    </div>
-    <div id="velocity-time" class="tab-pane fade">
-      {% gizmo plot_view velocity_timeseries %}
-    </div>
-    <div id="depth-time" class="tab-pane fade">
-      {% gizmo plot_view depth_timeseries %}
-    </div>
-    <div id="flow-time" class="tab-pane fade">
-      {% gizmo plot_view flow_timeseries %}
     </div>
   </div>
 {% endblock %}

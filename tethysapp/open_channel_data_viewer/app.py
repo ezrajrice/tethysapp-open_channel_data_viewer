@@ -27,21 +27,9 @@ class OpenChannelDataViewer(TethysAppBase):
                            url='open-channel-data-viewer',
                            controller='open_channel_data_viewer.controllers.home'),
                     UrlMap(name='site_details',
-                           url='open-channel-data-viewer/{site_name}/site-details',
+                           url='open-channel-data-viewer/{site_code}/site-details',
                            regex='[0-9A-Za-z_ .-]+',
                            controller='open_channel_data_viewer.controllers.site_details'),
                     )
 
         return url_maps
-
-    def persistent_stores(self):
-        """
-        Add one or more persistent stores
-        """
-        stores = (PersistentStore(name='open_channel_data_viewer_db',
-                                  initializer='open_channel_data_viewer.init_stores.init_db',
-                                  spatial=True
-                                  ),
-                  )
-
-        return stores
