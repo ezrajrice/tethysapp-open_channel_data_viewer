@@ -54,15 +54,17 @@ def site_details(request, site_code):
     site_location = site_info.siteInfo.siteProperty[0].value
 
     variables = []
-    for site in site_info.seriesCatalog.series:
+    for site in site_info.seriesCatalog[0].series:
         variable = {
             'variable_code': site.variable.variableCode[0].value,
-            'variable_name': site.variable.variableName
+            'variable_name': site.variable.variableName,
+            'variable_medium': site.variable.sampleMedium,
+            'variable_category': site.variable.generalCategory,
+            'variable_units': site.variable.unit.unitAbbreviation
         }
         variables.append(variable)
 
-    # variables = site_info.
-    print(site_info.seriesCatalog)
+    # print(variables)
 
     # Call the GetValuesObject method to return datavalues
     # site_data = NWIS.GetValuesObject(site_lookup, variable_code, begin_date, end_date)
@@ -89,6 +91,11 @@ def site_details(request, site_code):
     )
 
     context = {"scatter_plot_view": scatter_plot_view,
-               "site_name": site_name}
+               "site_name": site_name,
+               "site_code": site_code,
+               "latitude": latitude,
+               "longitude": longitude,
+               "site_location": site_location,
+               "variables": variables}
 
     return render(request, 'open_channel_data_viewer/site_details.html', context)

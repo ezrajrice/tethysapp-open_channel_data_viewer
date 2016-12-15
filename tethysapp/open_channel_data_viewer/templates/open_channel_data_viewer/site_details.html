@@ -13,19 +13,61 @@
   <h3>Sites > {{site_name}}</h3>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
-    <li id="sediment-transport-tab"><a data-toggle="tab" href="#sediment-transport">Sediment Transport</a></li>
+    <!--<li id="sediment-transport-tab"><a data-toggle="tab" href="#sediment-transport">Sediment Transport</a></li>-->
   </ul>
 
   <div class="tab-content">
     <div id="summary" class="tab-pane fade in active">
       <div class="col-md-6">
+        <h6>Metadata</h6>
         <table class="table table-hover">
           <tr>
             <td class="name">Site Name</td>
             <td>{{site_name}}</td>
           </tr>
+          <tr>
+            <td class="name">Site Code</td>
+            <td>{{site_code}}</td>
+          </tr>
+          <tr>
+            <td class="name">Longitude</td>
+            <td>{{longitude}}</td>
+          </tr>
+          <tr>
+            <td class="name">Latitude</td>
+            <td>{{latitude}}</td>
+          </tr>
+          <tr>
+            <td class="name">Site Location</td>
+            <td>{{site_location}}</td>
+          </tr>
         </table>
       </div>
+      {% for variable in variables %}
+      <div class="row">
+      <div class="col-md-6">
+        <h6>{{variable.variable_name}}</h6>
+        <table class="table table-hover">
+          <tr>
+            <td class="name">Variable Code</td>
+            <td>{{variable.variable_code}}</td>
+          </tr>
+          <tr>
+            <td class="name">Sample Medium</td>
+            <td>{{variable.variable_medium}}</td>
+          </tr>
+          <tr>
+            <td class="name">Category</td>
+            <td>{{variable.variable_category}}</td>
+          </tr>
+          <tr>
+            <td class="name">Units</td>
+            <td>{{variable.variable_units}}</td>
+          </tr>
+        </table>
+      </div>
+      </div>
+      {% endfor %}
     </div>
     <div id="sediment-transport" class="tab-pane fade">
       {% gizmo plot_view scatter_plot_view %}
